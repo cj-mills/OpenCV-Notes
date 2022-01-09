@@ -1,3 +1,6 @@
+!apt update && apt install -y libsm6 libxext6
+!apt-get install -y libxrender-dev
+
 import streamlit as st
 import cv2 as cv
 
