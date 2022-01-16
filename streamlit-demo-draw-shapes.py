@@ -70,10 +70,10 @@ if shape_option == "Line":
     cv.line(
         # Image to draw on
         img_bgr,
-        # Ending coords
-        (end_x, end_y),
         # Starting coords
         (origin_x, origin_y),
+        # Ending coords
+        (end_x, end_y),
         # Color (in BGR)
         (color_b, color_g, color_r),
         # Line thickness
