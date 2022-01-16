@@ -24,17 +24,13 @@ color_picker_col2.write(f"RGB Color Code: ({color_r},{color_g},{color_b})")
 
 col1, col2 = st.columns([1, 1])
 col1.subheader("Origin Coorindates")
-origin_x = col1.number_input("X:", min_value=0, max_value=img_bgr.shape[1], value=20)
-origin_y = col1.number_input("Y:", min_value=0, max_value=img_bgr.shape[0], value=20)
+origin_x = col1.slider("X:", min_value=0, max_value=img_bgr.shape[1], value=20)
+origin_y = col1.slider("Y:", min_value=0, max_value=img_bgr.shape[0], value=20)
 
 if shape_option == "Rectangle":
     col2.subheader("Dimensions")
-    width = col2.number_input(
-        "Width:", min_value=0, max_value=img_bgr.shape[1], value=40
-    )
-    height = col2.number_input(
-        "Height:", min_value=0, max_value=img_bgr.shape[0], value=40
-    )
+    width = col2.slider("Width:", min_value=0, max_value=img_bgr.shape[1], value=40)
+    height = col2.slider("Height:", min_value=0, max_value=img_bgr.shape[0], value=40)
     thickness = st.slider("Thickness", min_value=-1, max_value=20, value=2)
     cv.rectangle(
         # Image to draw on
@@ -50,7 +46,7 @@ if shape_option == "Rectangle":
     )
 if shape_option == "Circle":
     col2.subheader("Dimensions")
-    radius = col2.number_input(
+    radius = col2.slider(
         "Radius:", min_value=0, max_value=(min(img_bgr.shape[:2]) // 2), value=40
     )
     thickness = st.slider("Thickness", min_value=-1, max_value=20, value=2)
@@ -68,8 +64,8 @@ if shape_option == "Circle":
     )
 if shape_option == "Line":
     col2.subheader("Ending Coordinates")
-    end_x = col2.number_input("X:", min_value=0, max_value=img_bgr.shape[1], value=40)
-    end_y = col2.number_input("Y:", min_value=0, max_value=img_bgr.shape[0], value=40)
+    end_x = col2.slider("X:", min_value=0, max_value=img_bgr.shape[1], value=40)
+    end_y = col2.slider("Y:", min_value=0, max_value=img_bgr.shape[0], value=40)
     thickness = st.slider("Thickness", min_value=1, max_value=40, value=2)
     cv.line(
         # Image to draw on
@@ -86,9 +82,7 @@ if shape_option == "Line":
 if shape_option == "Text":
     col2.subheader("Input")
     text = col2.text_input("Enter some text:", "Hello World")
-    font_size = col2.number_input(
-        "Font Size:", min_value=0.0, max_value=10.0, value=1.0
-    )
+    font_size = col2.slider("Font Size:", min_value=0.0, max_value=10.0, value=1.0)
     cv.putText(
         # Image to draw on
         img_bgr,
