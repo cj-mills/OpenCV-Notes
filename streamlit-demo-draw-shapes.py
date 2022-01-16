@@ -1,13 +1,13 @@
 import streamlit as st
 import cv2 as cv
 
-
+st.title("Drawing Shapes and Text")
 st.header("Input Image")
 img_bgr = cv.imread("images/flower.jpg")
 st.image(cv.cvtColor(img_bgr, cv.COLOR_BGR2RGB), caption="Input")
 
 
-st.header("Drawing Shapes and Text")
+st.header("Shape Selection")
 shape_option = st.selectbox(
     "Select a shape", ("Rectangle", "Circle", "Line", "Text"), index=0
 )
